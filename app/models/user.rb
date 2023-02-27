@@ -12,9 +12,14 @@ class User < ActiveRecord::Base
     # def favorite_product
     #   self.products.max_by { |product| product.average_rating }
     # end
+
+    def favorite_product
+      products.where(reviews.max(:star_rating))
+  end
+
   
     def remove_reviews(product)
-      self.reviews.where(product_id: product.id).destroy_all
+      products.revuew.delete_all
     end
   
      
